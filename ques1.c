@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<string.h>
-
+/**
+*@ Authors: Samarth Bharti | Adita Kapoor |  Amitesh
+*@SNU ID  :   1410110358   |  1410110017  | 1410110044
+**/
 int numAlpha;	/*Stores the number of alphabets in language*/
  
 /*This function finds the column with respect to the input*/ 
@@ -49,6 +52,7 @@ void Transition(char *pattern, int patLen, int transFunc[][numAlpha], char* alph
 			printf("\nPattern has illegal character\n");
 			exit(0);
 		}
+		//Store corresponding state vs input in the transition table
   		transFunc[presentState][column] = State(pattern, patLen, presentState, x,alphabets);
 	}
   }
@@ -61,9 +65,10 @@ void check(char* pattern, char* input, char* alphabets)
 	
   	int N = strlen(input);
   	int transFunc[patLen+1][numAlpha];
-	
+	//Calling function to generate relevant transition function
   	Transition(pattern, patLen, transFunc, alphabets);
   	int i,j;
+	//Print the transition table
   	printf("The transition table is as follows:\n");
 	printf("    ");
 	for(i=0;i<numAlpha;i++){
@@ -88,6 +93,7 @@ void check(char* pattern, char* input, char* alphabets)
 			exit(0);
 		}
   		presentState = transFunc[presentState][column];
+		//Pattern found
   		if (presentState == patLen)
   		{
   			flag=1;
